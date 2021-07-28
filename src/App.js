@@ -1,47 +1,52 @@
 import React from "react";
+import axios from "axios";
+import Movie from "./Movie";
+import "./style/App.scss";
 
 class App extends React.Component {
-  constructor() {
-    super();
-    console.log("constructor");
-  }
-  //React는 자동적으로 Class component의 render method를 실행한다.
   state = {
-    count: 0,
+    isLoading: true,
+    movies: [],
   };
-  add = () => {
-    this.setState({ count: this.state.count + 1 }); //setState를 불러와 안에 state를 건드린다.
+
+  getMovies = async () => {
+    const {
+      data: {
+        data: { movies },
+      },
+    } = await axios.get("https://yts-proxy.now.sh/list_movies.json");
+    this.setState({ movies, isLoading: false });
   };
-  minus = () => {
-    this.setState((current) => ({ count: current.count - 1 }));
-  };
-  // componentDidMount() {
-  //   console.log("componentDidMount");
-  // }
-  // componentDidUpdate() {
-  //   console.log("componentDidUpdate");
-  // }
-  // componentWillUnmount() {
-  //   console.log("componentWillUnmount");
-  // }
+
+  componentDidMount() {
+    this.getMovies();
+  }
+
   render() {
-    // console.log("render function");
-    //setState를 호출하면 react는 state를 refresh하고 또한 render()를 다시 호출한다.
+    const { isLoading, movies } = this.state;
     return (
-      <div>
-        <h1>the Number is {this.state.count}</h1>
-        <button onClick={this.add}>add</button>
-        <button onClick={this.minus}>minus</button>
-      </div>
+      <section>
+        {isLoading ? (
+          <div className="loader_wrap">
+            <span className="loader_text">Loading...</span>
+          </div>
+        ) : (
+          <div className="movie_wrap">
+            {movies.map((movie) => (
+              <Movie
+                key={movie.id}
+                id={movie.id}
+                year={movie.year}
+                title={movie.title}
+                summary={movie.summary}
+                poster={movie.medium_cover_image}
+              />
+            ))}
+          </div>
+        )}
+      </section>
     );
   }
 }
 
 export default App;
-
-// react 라이프사이클
-// 1. constructor
-// 2. render
-// 3. componentDidMount - 렌더로 한번 그려지고 컴디마는 어디에 사용하는걸까?
-// 4. state가 변경되면 -> render 한번 돌고 -> componentDidUpdate
-// 5. componentWillUnmount 는 컴포넌트 kill!!!!할때

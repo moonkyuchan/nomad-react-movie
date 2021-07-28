@@ -1,0 +1,20 @@
+* {
+  box-sizing: border-box;
+  outline: 0;
+  margin: 0;
+}
+
+body {
+  background-color: #2f2f2f;
+  padding: 0 90px;
+}
+
+.loader_text {
+  color: white;
+}
+
+.movie_wrap {
+  max-width: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
