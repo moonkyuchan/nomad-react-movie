@@ -9,7 +9,7 @@ function Movie({ id, year, title, summary, poster }) {
       <div className="movie_content">
         <p className="movie_title">{title}</p>
         <p className="movie_year">{year}</p>
-        <p className="movie_summary">{summary}</p>
+        <p className="movie_summary">{summary.slice(0, 160)}...</p>
       </div>
     </div>
   );

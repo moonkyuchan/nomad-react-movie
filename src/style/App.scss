@@ -1,20 +1,31 @@
-* {
-  box-sizing: border-box;
-  outline: 0;
-  margin: 0;
+@import "./Reset.scss";
+
+html,
+body,
+#root,
+.app_section {
+  height: 100%;
 }
 
-body {
-  background-color: #2f2f2f;
-  padding: 0 90px;
+.app_section {
+  padding: 0 20px;
 }
 
-.loader_text {
-  color: white;
+.loader_wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+
+  .loader_text {
+    color: white;
+    font-size: 60px;
+  }
 }
 
 .movie_wrap {
-  max-width: 100%;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
+  place-items: center;
 }

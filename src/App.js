@@ -25,7 +25,7 @@ class App extends React.Component {
   render() {
     const { isLoading, movies } = this.state;
     return (
-      <section>
+      <div className="app_section">
         {isLoading ? (
           <div className="loader_wrap">
             <span className="loader_text">Loading...</span>
@@ -44,7 +44,7 @@ class App extends React.Component {
             ))}
           </div>
         )}
-      </section>
+      </div>
     );
   }
 }
