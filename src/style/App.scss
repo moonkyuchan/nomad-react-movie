@@ -1,0 +1,40 @@
+@import "./Reset.scss";
+
+html,
+body,
+#root,
+.app_section {
+  height: 100%;
+}
+
+.app_section {
+  padding: 0 20px;
+}
+
+.loader_wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+
+  .loader_text {
+    color: white;
+    font-size: 60px;
+  }
+}
+
+.page_title {
+  display: flex;
+  justify-content: center;
+  color: white;
+  font-size: 80px;
+  font-style: italic;
+  margin: 60px 0;
+}
+
+.movie_wrap {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  place-items: center;
+}
