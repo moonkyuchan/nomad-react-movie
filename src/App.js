@@ -31,18 +31,21 @@ class App extends React.Component {
             <span className="loader_text">Loading...</span>
           </div>
         ) : (
-          <div className="movie_wrap">
-            {movies.map((movie) => (
-              <Movie
-                key={movie.id}
-                id={movie.id}
-                year={movie.year}
-                title={movie.title}
-                summary={movie.summary}
-                poster={movie.medium_cover_image}
-              />
-            ))}
-          </div>
+          <>
+            <div className="page_title">Moon's Pick !</div>
+            <div className="movie_wrap">
+              {movies.map((movie) => (
+                <Movie
+                  key={movie.id}
+                  id={movie.id}
+                  year={movie.year}
+                  title={movie.title}
+                  summary={movie.summary}
+                  poster={movie.medium_cover_image}
+                />
+              ))}
+            </div>
+          </>
         )}
       </div>
     );
